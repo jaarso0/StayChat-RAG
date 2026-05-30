@@ -1,0 +1,10 @@
+<div class='hotel-desc'>
+the RITZ london â€” piccadilly, LONDON
+
+Opened in 1906 by the legendary hotelier CÃ©sar Ritz, The Ritz London is a Grade II listed building on Piccadilly&nbsp;overlooking Green Park.  The hotel is synonymous with  British elegance and has hosted royalty, heads of state, and celebrities for over a century.
+
+<p>The 136 rooms and suites are decorated in Louis XVI style with gilded furnishings, ornate plasterwork,  and hand-painted ceilings.&nbsp;&nbsp; Each room features marble bathrooms, bespoke toiletries, and views of Piccadilly or  Green Park.</p>
+
+The Palm Court is world-famous  for its afternoon tea â€” a tradition dating back to the hotelâ€™s opening. The Ritz Restaurant serves classic French cuisine  beneath a stunning ceiling painted to resemble a summer sky.
+</div>
+<div class='footer'>© 2024 Luxury Hotels International. All rights reserved. | Privacy Policy | Terms of Service | Cookie Settings</div>
