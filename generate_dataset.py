@@ -1,41 +1,18 @@
-"""
-generate_dataset.py — Generate intentionally messy synthetic hotel documents as individual .txt files.
 
-Produces 39 raw text documents across 5 categories in data/raw/:
-  - Hotel Descriptions  (8 files)
-  - Amenities           (7 files)
-  - Guest Reviews      (10 files)
-  - Policies            (7 files)
-  - Location Details    (7 files)
-
-Each document is intentionally polluted with:
-  • HTML tags (<p>, <br>, <div>, <span>, &amp;, &nbsp;)
-  • Encoding artifacts (â€™, â€¢, â€” instead of ', •, —)
-  • Boilerplate footers (© notices, cookie banners, nav links)
-  • Extra whitespace (double spaces, tabs, random newlines)
-  • Inconsistent capitalization
-
-Usage:
-    python generate_dataset.py
-"""
 
 import os
 import re
 from collections import Counter
 
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
 
 def clean_filename(name: str) -> str:
-    """Convert hotel name to a clean filesystem-friendly string."""
     name = name.replace("&", "And")
     name = re.sub(r"[^\w\-]", "_", name)
     return re.sub(r"_+", "_", name).strip("_")
 
-# ---------------------------------------------------------------------------
-# Category 1: Hotel Descriptions (8 docs) — messy
-# ---------------------------------------------------------------------------
+
+## HOTEL DESCRIPTIONS
+
 
 DESCRIPTIONS = [
     {
@@ -146,9 +123,7 @@ the kilometre-long private beach  is one of the most uncrowded in Dubai.  Lush g
     },
 ]
 
-# ---------------------------------------------------------------------------
-# Category 2: Guest Reviews (10 docs) — messy
-# ---------------------------------------------------------------------------
+##HOTEL REVIEWS
 
 REVIEWS = [
     {
@@ -287,9 +262,7 @@ The butler service was exceptional â€”  our butler Rashid anticipated every
     },
 ]
 
-# ---------------------------------------------------------------------------
-# Category 3: Policies (7 docs) — messy
-# ---------------------------------------------------------------------------
+##HOTEL POLICIES
 
 POLICIES = [
     {
@@ -431,9 +404,7 @@ cancellation &amp; BOOKING POLICY  â€” Atlantis Paradise Island
     },
 ]
 
-# ---------------------------------------------------------------------------
-# Category 4: Amenities (7 docs) — messy
-# ---------------------------------------------------------------------------
+##HOTEL AMENITIES
 
 AMENITIES = [
     {
@@ -577,9 +548,7 @@ AMENITIES &amp; facilities  â€” atlantis PARADISE island
     },
 ]
 
-# ---------------------------------------------------------------------------
-# Category 5: Location Details (7 docs) — messy
-# ---------------------------------------------------------------------------
+##HOTEL LOCATIONS
 
 LOCATIONS = [
     {
@@ -727,9 +696,6 @@ Nearby Attractions:
     },
 ]
 
-# ---------------------------------------------------------------------------
-# Execution
-# ---------------------------------------------------------------------------
 
 def generate_all_files():
     """Write each messy document as an individual .txt file in data/raw/."""
@@ -754,11 +720,10 @@ def generate_all_files():
             hotel_name = item["hotel_name"]
             text_content = item["text"]
 
-            # Compute specific filename
+            
             hotel_slug = clean_filename(hotel_name)
             
             if cat_name == "review":
-                # Keep track of review indices per hotel
                 review_indices[hotel_slug] = review_indices.get(hotel_slug, 0) + 1
                 filename = f"{hotel_slug}_review_{review_indices[hotel_slug]}.txt"
             else:
@@ -782,7 +747,6 @@ def generate_all_files():
     for hotel, count in sorted(hotel_counters.items()):
         print(f"    - {hotel}: {count} files")
 
-    # Analyze messiness indicators across all generated documents
     all_texts = []
     for cat_name, items in categories:
         for item in items:

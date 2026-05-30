@@ -1,0 +1,8 @@
+langchain-groq
+langchain-huggingface==1.2.1
+langchain-community==0.4.1
+langchain-core==1.4.0
+langchain-text-splitters==1.1.1
+faiss-cpu==1.13.2
+sentence-transformers==5.5.0
+python-dotenv==1.2.1
